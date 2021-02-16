@@ -1,0 +1,63 @@
+<!DOCTYPE>
+
+<html>
+
+
+<head>
+    <link rel="stylesheet" href="styles.css"> 
+</head>
+<body>
+ <div class="main">
+ <div class="container">
+  <div class="header"> <h1>Etch-a-Sketch</h1> </div>
+  <div> <button onclick="resetCells()">Reset</button></div>
+ </div>
+</div>
+</body>
+
+
+<script>
+
+let sizeNum = 16;
+
+let sizeStr = prompt("Please enter the size of the etch-a-sketch board!"); 
+sizeNum = parseInt(sizeStr);
+
+    const container = document.querySelector(".container");
+    
+    for (let rowNum = 1; rowNum <= sizeNum; rowNum++) {
+      let Row = document.createElement("div");
+      Row.classList.add("Row");
+      let parentRowNum = "Row" + rowNum;
+      Row.classList.add(parentRowNum);
+      container.appendChild(Row);
+
+      for (let cellNum = 1; cellNum <= sizeNum; cellNum++) {
+       let parentRow = document.querySelector("." + parentRowNum);
+       let gridCell = document.createElement("div");
+       gridCell.classList.add("Cell");
+       parentRow.appendChild(gridCell);
+     }
+    }
+    
+    
+//DOM
+   
+function resetCells() {
+    let selectedCells = document.querySelectorAll(".selectedCell");
+    selectedCells.forEach((selectedCell) => {
+    selectedCell.classList.remove("selectedCell");
+}); 
+}
+
+ const cells = document.querySelectorAll('.cell');
+ cells.forEach((cell) => {
+    cell.addEventListener('click', () => {
+    cell.classList.add("selectedCell");
+  });
+});
+
+</script>
+
+
+</html>
